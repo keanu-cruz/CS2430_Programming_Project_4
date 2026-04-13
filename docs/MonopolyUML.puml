@@ -1,0 +1,120 @@
+@startuml
+
+  class Main {
+    + main(args : String[]) : void
+  }
+
+  class SimulationEngine {
+    - board : Board
+    - chance : Deck
+    - chest : Deck
+    + runAllSims() : void
+    + runSimulation(strategy : Strategy, sim : int) : void
+    + takeTurn(player : Player, strategy : Strategy) : void
+    + move()
+    + resolve()
+    + applyCard()
+    + sendToJail()
+    + handleJail()
+    
+  }
+
+  Enum Strategy {
+    + Strategy A (Immediate Exit)
+    + Strategy B (Try for Doubles Roll)
+  }
+
+  class ResultAnalyzer {
+    + analyzeTopSquares(squares : List<Square>) : List<Square>
+    + printResults(squares : List<Square>) : void
+    + save() : void
+  }
+
+
+  class Board {
+    - squares : List<Square>
+    + buildBoard()
+    + initialize() : void
+    + getPosition(pos : int) : Square
+    + allSquares() : List<Square>
+    + resetCounts() : void
+    + nearestRailroad(pos : int) : int
+    + nearestUtility(pos : int) : int
+  }
+
+  abstract class Square {
+    + name : String
+    + index : int
+    + type : String
+    - visitCount : int
+    + Square(index : int, name: String, type: String)
+    + land() : void
+    + getCount() : int
+    + resetCount() : void
+  }
+
+
+  class Card {
+    + type : String
+    + value : int
+    + Card(type : String, value : int)
+    + apply(player : Player, engine : SimulationEngine) : boolean
+    
+  }
+
+  class Deck {
+    - draw : List<Card>
+    - discard : List<Card>
+    + Deck(cards : List<Card>)
+    + drawCard() : Card
+    + reshuffle() : void
+    + createChest() : List<Card>
+    + createChance() : List<Card>
+  }
+
+  class Player {
+    + position : int
+    + inJail : boolean
+    + jailTurns : int
+    + doublesCount : int
+    + getOutOfJailCards : int
+    + resetDoubles() : void
+  }
+
+
+
+
+  class Dice {
+    - rand : RandomGenerator
+    + roll() : int
+  }
+
+
+' Entry point
+Main --> SimulationEngine
+
+' Core engine ownership (composition)
+SimulationEngine *-- Board
+SimulationEngine *-- Deck : chance
+SimulationEngine *-- Deck : chest
+SimulationEngine *-- Dice
+
+' Engine uses these
+SimulationEngine --> Player
+SimulationEngine --> Strategy
+SimulationEngine --> ResultAnalyzer
+
+' Board structure
+Board *-- Square
+
+' Deck structure
+Deck *-- Card
+
+' Card behavior dependencies
+Card --> Player
+Card --> SimulationEngine
+
+' Result processing
+ResultAnalyzer --> Square
+
+@enduml
