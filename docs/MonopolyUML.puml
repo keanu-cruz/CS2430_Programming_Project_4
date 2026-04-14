@@ -9,6 +9,7 @@
     - chance : Deck
     - chest : Deck
     - dice : Dice
+    - totalMoves: int
     + runAllSims() : void
     + runSimulation(strategy : Strategy, sim : int) : void
     + takeTurn(player : Player, strategy : Strategy) : void
