@@ -9,7 +9,7 @@
     - chance : Deck
     - chest : Deck
     - dice : Dice
-    - totalMoves: int
+    - totalMoves : int
     + runAllSims() : void
     + runSimulation(strategy : Strategy, sim : int) : void
     + takeTurn(player : Player, strategy : Strategy) : void
@@ -41,27 +41,28 @@
     - squares : List<Square>
     + buildBoard() : void
     + getPosition(pos : int) : Square
-    + allSquares() : List<Square>
+    + getAllSquares() : List<Square>
     + resetCounts() : void
     + nearestRailroad(pos : int) : int
     + nearestUtility(pos : int) : int
   }
 
   abstract class Square {
-    + name : String
-    + index : int
-    + type : String
+    - name : String
+    - index : int
+    - type : String
     - visitCount : int
     + Square(index : int, name: String, type: String)
     + land() : void
     + getCount() : int
+    + incrementVisit() : void
     + resetCount() : void
   }
 
 
   class Card {
-    + type : String
-    + value : int
+    - type : String
+    - value : int
     + Card(type : String, value : int)
     + apply(player : Player, engine : SimulationEngine) : boolean
     
@@ -78,11 +79,11 @@
   }
 
   class Player {
-    + position : int
-    + inJail : boolean
-    + jailTurns : int
-    + doublesCount : int
-    + getOutOfJailCards : int
+    - position : int
+    - inJail : boolean
+    - jailTurns : int
+    - doublesCount : int
+    - getOutOfJailCards : int
     + resetDoubles() : void
   }
 
