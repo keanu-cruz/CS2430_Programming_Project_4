@@ -5,7 +5,7 @@
 | Course/Term | CS 2430-501           |
 | Project     | Programming Project 4 |
 | Team Name   | Team 1                |
-| Start Date  | 2/13/2026             |
+| Start Date  | 4/13/2026             |
 | Due Date    | 5/3/2026              |
 | Check Point | 4/26/2026             |
 
