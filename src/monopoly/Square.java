@@ -17,7 +17,6 @@ package monopoly;
  */
 public class Square {
     private String name;
-    private int index;
     private String type;
     private int visitCount;
 
@@ -29,7 +28,6 @@ public class Square {
      */
     public Square(String name, int index, String type) {
         this.name = name;
-        this.index = index;
         this.type = type;
     }
 
@@ -38,20 +36,24 @@ public class Square {
      * @param player
      * @param engine
      */
-    public void land(Player player, SimulationEngine engine){
+    public boolean land(Player player, SimulationEngine engine){
+
         if (type.equals("GOTOJAIL")){
             engine.sendToJail(player);
+            return true;
         }
 
         if (type.equals("CHANCE")){
             Card c = engine.getChanceDeck().drawCard();
-            c.applyCard(player, engine);
+            return c.applyCard(player, engine);
         }
 
         if (type.equals("CHEST")){
             Card c = engine.getChestDeck().drawCard();
-            c.applyCard(player, engine);
+            return c.applyCard(player, engine);
         }
+
+        return false;
     }
 
     /**
@@ -60,14 +62,6 @@ public class Square {
      */
     public String getName() {
         return name;
-    }
-
-    /**
-     * Returns index position of a Square
-     * @return
-     */
-    public int getIndex() {
-        return index;
     }
 
     /**

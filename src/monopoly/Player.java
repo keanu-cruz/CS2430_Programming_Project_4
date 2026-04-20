@@ -14,7 +14,7 @@ package monopoly;
  * @author Keanu Cruz
  */
 public class Player {
-    private int position = 0;
+    private int position;
     private boolean inJail = false;
     private int jailTurns = 0;
     private int doublesCount = 0;
@@ -37,11 +37,27 @@ public class Player {
     }
 
     /**
-     * Returns turns in jail
+     * Returns number of turns in jail
      * @return
      */
     public int getJailTurns() {
         return jailTurns;
+    }
+
+    /**
+     * Setter for number of jailTurns
+     * @param jailTurns
+     */
+    public void setJailTurns(int jailTurns) {
+        this.jailTurns = jailTurns;
+    }
+
+    /**
+     * Changes status of player whether they are in jail or not.
+     * @return
+     */
+    public void setIsInJail(boolean inJail) {
+        this.inJail = inJail;
     }
 
     /**
@@ -57,7 +73,17 @@ public class Player {
      * @return
      */
     public int getGetOutOfJailCards() {
-        return getOutOfJailCards;
+            return getOutOfJailCards;
+    }
+
+    /**
+     * Decreases GetOutOfJailCards count by 1.
+     * @return
+     */
+    public void useGetOutOfJailCard() {
+        if (getOutOfJailCards > 0) {
+            getOutOfJailCards--;
+        }
     }
 
     /**

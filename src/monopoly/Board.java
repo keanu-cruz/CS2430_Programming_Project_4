@@ -18,12 +18,53 @@ import java.util.List;
  */
 public class Board {
     private List<Square> squares;
+    private static final String[] NAMES = {
+            "GO",
+            "Mediterranean Ave",
+            "Community Chest",
+            "Baltic Ave",
+            "Income Tax",
+            "Reading Railroad",
+            "Oriental Ave",
+            "Chance",
+            "Vermont Ave",
+            "Connecticut Ave",
+            "Jail",
+            "St. Charles Place",
+            "Electric Company",
+            "States Ave",
+            "Virginia Ave",
+            "Pennsylvania Railroad",
+            "St. James Place",
+            "Community Chest",
+            "Tennessee Ave",
+            "New York Ave",
+            "Free Parking",
+            "Kentucky Ave",
+            "Chance",
+            "Indiana Ave",
+            "Illinois Ave",
+            "B. & O. Railroad",
+            "Atlantic Ave",
+            "Ventnor Ave",
+            "Water Works",
+            "Marvin Gardens",
+            "Go To Jail",
+            "Pacific Ave",
+            "North Carolina Ave",
+            "Community Chest",
+            "Pennsylvania Ave",
+            "Short Line Railroad",
+            "Chance",
+            "Park Place",
+            "Luxury Tax",
+            "Boardwalk"
+    };
 
     /**
      * Initializes the field squares and builds game board.
-     * @param squares
      */
-    public Board(List<Square> squares) {
+    public Board() {
         this.squares = new ArrayList<>();
         buildBoard();
     }
@@ -42,7 +83,7 @@ public class Board {
             else if (i == 10){
                 type = "JAIL";
             }
-            else if (i ==20){
+            else if (i == 20){
                 type = "FREE PARKING";
             }
             else if (i == 30){
@@ -64,7 +105,7 @@ public class Board {
                 type = "UTILITY";
             }
 
-            squares.add(new Square("Square: " + i, i, type));
+            squares.add(new Square(NAMES[i], i, type));
         }
     }
 
@@ -73,8 +114,8 @@ public class Board {
      * @param pos
      * @return
      */
-    public Square getPosition(int pos){
-        return squares.get(pos);
+    public Square getSquare(int pos){
+        return squares.get(pos % 40);
     }
 
     /**

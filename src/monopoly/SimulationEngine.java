@@ -19,52 +19,215 @@ public class SimulationEngine {
     private Deck chest;
     private Dice dice;
     private int totalMoves;
+    private ResultAnalyzer analyzer = new ResultAnalyzer();
 
+    /**
+     * Initializes the fields Board, Chance (Deck), Chest (Deck), Dice, and TotalMoves.
+     * @param board
+     * @param chance
+     * @param chest
+     * @param dice
+     * @param totalMoves
+     */
+    public SimulationEngine() {
+        board = new Board();
+        chance = new Deck(Deck.createChance());
+        chest = new Deck(Deck.createChest());
+        dice = new Dice();
+        totalMoves = 0;
+    }
+
+    /**
+     * Returns Board with all Squares Initialized
+     * @return
+     */
     public Board getBoard() {
         return board;
     }
 
+    /**
+     * Returns a Deck with all Chance cards initialized
+     * @return
+     */
     public Deck getChanceDeck() {
         return chance;
     }
 
+    /**
+     * Returns a Deck with all Chest cards initialized
+     * @return
+     */
     public Deck getChestDeck() {
         return chest;
     }
 
-    public Dice getDice() {
-        return dice;
+    /**
+     * Returns Result Analyzer used by engine.
+     * @return
+     */
+    public ResultAnalyzer getAnalyzer() {
+        return analyzer;
     }
 
-    public int getTotalMoves() {
-        return totalMoves;
-    }
-
+    /**
+     * Runs 10 simulations for 1000, 10,000, 100,000 and 1,000,000 turns.
+     * <p>Prints results using ResultAnalyzer save method.</p>
+     */
     public void runAllSims(){
-        //TODO: write function that runs all simulations
+        int[] turnsCheck = {1000, 10000, 100000, 1000000};
+        analyzer = this.analyzer;
+
+        for (Strategy strategy : Strategy.values()){
+            for (int sim = 1; sim <= 10; sim++){
+
+                for (int turns : turnsCheck){
+                    board.resetCounts();
+                    chance = new Deck(Deck.createChance());
+                    chest = new Deck(Deck.createChest());
+                    Player player = new Player();
+
+                    for (int t = 0; t < turns; t++){
+                        takeTurn(player, strategy);
+                    }
+
+                    analyzer.save(board, strategy, sim, turns);
+                }
+            }
+        }
     }
 
-    public void runSimulation(Strategy strategy, int sim){
-        //TODO: write function that runs a simulation
-    }
-
+    /**
+     * Handles Player turn game mechanics.
+     * <ul>
+     *     <li>Standard Move:
+     *     Dice is rolled and increments doublesCount if a double is rolled. Then player turn is resolved.</li>
+     *     <li>If in jail: uses handleJail method to control game flow.</li>
+     *     <li>Doubles: If double roll again. If double is >= 3 then send player to jail.</li>
+     * </ul>
+     * @param player
+     * @param strategy
+     */
     public void takeTurn(Player player, Strategy strategy){
-        //TODO: write function handles turn taking
+
+        if (player.isInJail()) {
+            handleJail(player, strategy);
+            return;
+        }
+
+        int steps = dice.roll();
+        boolean isDouble = dice.isDouble();
+
+        if (isDouble) {
+            player.incrementDoublesCount();
+        } else {
+            player.resetDoubles();
+        }
+
+        if (player.getDoublesCount() >= 3) {
+            sendToJail(player);
+            return;
+        }
+
+        move(player, steps);
+        resolve(player);
+
+        if (isDouble && !player.isInJail()) {
+            takeTurn(player, strategy);
+        }
     }
 
+    /**
+     * Moves Player position based on dice roll.
+     * @param player
+     * @param steps
+     */
     public void move(Player player, int steps){
-        //TODO: write function that handles player movement
+        int newPosition = (player.getPosition() + steps) % 40;
+        player.setPosition(newPosition);
+        totalMoves++;
     }
 
+    /**
+     * Resolves a players turn.
+     * <p>If player has multiple mechanics, such as multiple cards, to resolve keeps resolving until resolve
+     * returns false.</p>
+     * @param player
+     */
     public void resolve(Player player){
-        //TODO: write function that handles what happens after a player moves
+        while (true) {
+            Square square = board.getSquare((player.getPosition()));
+
+            boolean moved = square.land(player, this);
+
+            if(!moved){
+                square.incrementVisit();
+                break;
+            }
+        }
     }
 
+    /**
+     * Sends a player to jail and resets doubles in case that's the reason for going to jail.
+     * @param player
+     */
     public void sendToJail(Player player){
-        //TODO: write function that sends player to jail
+        player.setPosition(10);
+        player.setIsInJail(true);
+        player.setJailTurns(0);
+        player.resetDoubles();
     }
 
+    /**
+     * Handles game flow mechanics for Strategy A and Strategy B for inJail.
+     * <ul>
+     *     <li>Both Strategies: if Get Out of Jail Card available, uses a card to immediately be free.</li>
+     *     <li>Strategy A: Assumed you paid fine and moves on next turn.</li>
+     *     <li>Strategy B: Rolls Doubles to try to get out. If player hasn't gotten out by turn 3, player
+     *     is able to leave on turn 4.</li>
+     * </ul>
+     * @param player
+     * @param strategy
+     */
     public void handleJail(Player player, Strategy strategy){
-        //TODO: write function that uses one of two get out of jail strategies.
+        if (player.getGetOutOfJailCards() > 0 ){
+            player.useGetOutOfJailCard();
+            player.setIsInJail(false);
+
+            int steps = dice.roll();
+            move(player, steps);
+            resolve(player);
+            return;
+        }
+
+        if (strategy == Strategy.A){
+            player.setIsInJail(false);
+
+            int steps = dice.roll();
+            move(player, steps);
+            resolve(player);
+            return;
+        }
+
+        player.incrementJailTurns();
+
+        if (player.getJailTurns() <= 3) {
+
+            int steps = dice.roll();
+            boolean isDouble = dice.isDouble();
+
+            if (isDouble) {
+                player.setIsInJail(false);
+                player.setJailTurns(0);
+                move(player, steps);
+                resolve(player);
+            }
+            return;
+        }
+            player.setIsInJail(false);
+            player.setJailTurns(0);
+
+            int steps = dice.roll();
+            move(player, steps);
+            resolve(player);
+        }
     }
-}

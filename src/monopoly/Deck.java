@@ -42,7 +42,11 @@ public class Deck {
         }
 
         Card card = draw.remove(0);
-        discard.add(card);
+
+        if (!card.getType().equals("GETOUTOFJAIL")){
+            discard.add(card);
+        }
+
         return card;
     }
 
@@ -67,7 +71,7 @@ public class Deck {
      */
     public static List<Card> createChest(){
         return List.of(
-                new Card("MOVE", 0),
+                new Card("MOVETOGO", 0),
                 new Card("MONEY", 0),
                 new Card("MONEY", 0),
                 new Card("MONEY", 0),
@@ -102,7 +106,7 @@ public class Deck {
     public static List<Card> createChance(){
         return List.of(
                 new Card("MOVE", 39),
-                new Card("MOVE", 0),
+                new Card("MOVETOGO", 0),
                 new Card("MOVE", 24),
                 new Card("MOVE", 11),
                 new Card("NEXTRR", 0),

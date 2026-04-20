@@ -46,6 +46,7 @@ public class Card {
     /**
      * Applies card effect to a player.
      * <ul>
+     *     <li>MOVETOGO: Moves player to GO</li>
      *     <li>MOVE: Moves player to position value on card.</li>
      *     <li>MOVEBACK: Moves player position back by value on card.</li>
      *     <li>GOTOJAIL: Sends player to jail.</li>
@@ -61,6 +62,10 @@ public class Card {
     public  boolean applyCard(Player player, SimulationEngine engine){
 
         switch (type){
+            case "MOVETOGO":
+                player.setPosition(0);
+                return true;
+
             case "MOVE":
                 player.setPosition(value);
                 return true;
@@ -84,9 +89,6 @@ public class Card {
             case "NEXTUTIL":
                 player.setPosition(engine.getBoard().nearestUtility(player.getPosition()));
                 return true;
-
-            case "MONEY":
-                return false;
 
             default:
                 return false;
