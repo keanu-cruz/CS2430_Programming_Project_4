@@ -12,7 +12,7 @@
 | Role | Team Member | Primary Responsibilities |
 | --- | --- | --- |
 | Implementation Lead | Keanu Cruz                 | Owns core algorithm implementation;      |
-| Verification Lead   | John McElprang             | Creates test plan; edge cases; validate; |
+| Verification Lead   | John McElprang             | Creates test plan; validate;             |
 | Communications Lead | Micheal McCleary(inactive) | Assembles report/video;                  |
 | Communications Lead | Pong Vodmongkol(inactive)  | Assembles report/video;                  |
 
