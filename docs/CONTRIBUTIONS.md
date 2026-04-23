@@ -38,6 +38,16 @@
     - Designed Project Timeline
     - Created README.md
     - Created CONTRIBUTIONS.md
+    - Designed `BoardTest.java` testing suite with respective tests.
+    - Designed `CardTest.java` testing suite with respective tests.
+    - Designed `DeckTest.java` testing suite with respective tests.
+    - Designed `DiceTest.java` testing suite with respective tests.
+    - Designed `MainTest.java` testing suite with respective tests.
+    - Designed `PlayerTest.java` testing suite with respective tests.
+    - Designed `ResultAnalyzerTest.java` testing suite with respective tests.
+    - Designed `SimulationEngineTest.java` testing suite with respective tests.
+    - Designed `SquareTest.java` testing suite with respective tests.
+    - Designed `StrategyTest.java` testing suite with respective tests.
 - **Michael McCleary & Pong Vodmongkol(Inactive):**
     - Ensured docs and layout
     - Ensured intermember communication/planning and checkups.
@@ -50,10 +60,23 @@
 
 ### Johnathan McElprang (jmack02) [Verification Lead]
 **Primary responsibilities**
-
+- Leading developer for `BoardTest.java`.
+- Leading developer for `CardTest.java`.
+- Leading developer for `DeckTest.java`.
+- Leading developer for `DiceTest.java`.
+- Leading developer for `MainTest.java`.
+- Leading developer for `PlayerTest.java`.
+- Leading developer for `ResultAnalyzerTest.java`.
+- Leading developer for `SimulationEngineTest.java`.
+- Leading developer for `SquareTest.java`.
+- Leading developer for `StrategyTest.java`.
+- Making sure that the project has been through thorough testing
 
 **Completed work (what you actually delivered)**
-
+- Verification -  https://github.com/keanu-cruz/CS2430_Programming_Project_4/commit/4b9e166d707d0927d1b2fcea2e0b139d06165822
+- Project Plan -  https://github.com/keanu-cruz/CS2430_Programming_Project_4/commit/f0ed9bb9926a3e05a1e80c130e377629f865a953
+- Contributions - https://github.com/keanu-cruz/CS2430_Programming_Project_4/commit/d5af956a43f06da193108e65354a05bda5eb261d
+- Read Me - https://github.com/keanu-cruz/CS2430_Programming_Project_4/commit/d8ad30d40a97174fce0589fb8ceaa7be6f72a308
 
 **Collaboration / Support**
 
