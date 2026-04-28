@@ -1,4 +1,4 @@
-package team1;
+package monopoly;
 
 //=============================================================================
 //File:             CardTest.java
@@ -9,6 +9,7 @@ package team1;
 //Primary Author:   Verification Lead (Johnathan McElprang)
 //=============================================================================
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -104,7 +105,7 @@ public class CardTest {
 
         Card card = new Card("GOTOJAIL", 0);
 
-        assertDoesNotThrow(() -> card.applyCard(player, engine));
+        Assertions.assertDoesNotThrow(() -> card.applyCard(player, engine));
     }
 
     
