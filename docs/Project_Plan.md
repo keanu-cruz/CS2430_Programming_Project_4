@@ -28,8 +28,8 @@
 | Skeleton running               | 4/19/2026 | Keanu      | README run steps; sample runs;                    | Done | Commit # 9 on intital-src-code  |
 | Core implementation            | 4/22/2026 | Keanu      | All required features implemented; compiles/runs; | Done | Commit # 16 on initial-src-code |
 | Verification Complete          | 4/22/2026 | John       | Test suite covers edge cases; expected vs actual; | Done | Commit # 15 - 24 on Testing     |
-| Report Complete                | 5/3/2026  | Keanu      | Report Complete;                                  |      |                                 |
-| Final integration + submission | 5/3/2026  | John       | Everything finised + submitted;                   |      |                                 |
+| Report Complete                | 4/25/2026 | Keanu      | Report Complete;                                  | Done | Commit # 31 on main             |
+| Final integration + submission | 4/28/2026 | John       | Everything finised + submitted;                   | Done |                                 |
 
 | ID | Task | Owner | Due Date | Status | Evidence Link/Pointer | Notes/Dependincies
 | --- | --- | --- | --- | --- | --- | --- |
@@ -40,9 +40,9 @@
 | 5  | Finish core implementation | Keanu      | Done. | 4/22/2026 | Commit # 16 on initial-src-code | Skeleton             |
 | 6  | Intiail testing            | John       | Done. | 4/22/2026 |  Commit # 15 - 24 on Testing    | Core Implementation  |
 | 7  | Complete verification      | John       | Done. | 4/22/2026 |  Commit # 15 - 24 on Testing    | Initial testing      |
-| 8  | Draft Report               | Keanu      |  IP   |           |                                 | Verification         |
-| 9  | Draft Video                | John/Keanu |  IP   |           |                                 | None.                |
-| 10 | Finish and submit          | John/Keanu |       |           |                                 | Draft Report/Video   |
+| 8  | Draft Report               | Keanu      | Done. | 4/25/2026 |  Commit # 31 on main            | Verification         |
+| 9  | Draft Video                | John/Keanu | Done. | 4/28/2026 |                                 | None.                |
+| 10 | Finish and submit          | John/Keanu | Done. | 4/28/2026 |                                 | Draft Report/Video   |
 
 | Risk/Blocker | Impact | Mitigation Plan | Owner | Status
 | --- | --- | --- | --- | --- |
@@ -55,5 +55,6 @@
 | 4/13/2026 | Repo created                                   | None.                       | Commit #1 on main                                                 |
 | 4/13/2026 | UML and Desing notes finished                  | None.                       | Commit #2-5 on main                                               |
 | 4/19/2026 | Skeleton finished                              | None.                       | Commit #9 on Intisial-src-code                                    |
-| 4/23/2026 | Core Implementation and Verification finished  | None.                       |  Commit # 16 on initial-src-code and Commit # 15 - 24 on Testing  |                               
+| 4/23/2026 | Core Implementation and Verification finished  | None.                       |  Commit # 16 on initial-src-code and Commit # 15 - 24 on Testing  | 
+| 4/28/2026 | Submission Done                                | None.                       |                                                                   |
 
