@@ -125,7 +125,7 @@
 ## Attestation
 Each team member should add initials next to their name once reviewed. (Due at the end of Project 3)
 
-- Keanu Cruz: __ Date: 4/28/2026
+- Keanu Cruz: KC Date: 4/28/2026
 - Johnathan McElprang: JM Date: 4/28/2026
 - Michael McCleary: __ Date: ______
 - Pong Vodmongkol: __ Date: ______
