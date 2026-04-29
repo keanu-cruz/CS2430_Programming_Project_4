@@ -79,7 +79,8 @@
 - Read Me - https://github.com/keanu-cruz/CS2430_Programming_Project_4/commit/d8ad30d40a97174fce0589fb8ceaa7be6f72a308
 
 **Collaboration / Support**
-
+- Project Report - https://github.com/keanu-cruz/CS2430_Programming_Project_4/commit/ad354d6d143fae6fdda1f9e2f049995980300dd7
+- Video Submission - Canvas Submission
 
 ---
 
@@ -105,7 +106,8 @@
 
 
 **Collaboration / support**
-
+- Project Report - https://github.com/keanu-cruz/CS2430_Programming_Project_4/commit/ad354d6d143fae6fdda1f9e2f049995980300dd7
+- Video Submission - Canvas Submission
 
 ### Michael McCleary & Pong Vodmongkol(Inactive) [Communications Lead]
 **Responsibilities:**
@@ -123,8 +125,8 @@
 ## Attestation
 Each team member should add initials next to their name once reviewed. (Due at the end of Project 3)
 
-- Keanu Cruz: __ Date: _______
-- Johnathan McElprang: __ Date: ______
+- Keanu Cruz: __ Date: 4/28/2026
+- Johnathan McElprang: JM Date: 4/28/2026
 - Michael McCleary: __ Date: ______
 - Pong Vodmongkol: __ Date: ______
 
